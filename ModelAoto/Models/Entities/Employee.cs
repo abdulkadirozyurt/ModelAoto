@@ -7,32 +7,25 @@ using System.Web;
 
 namespace ModelAoto.Models.Entities
 {
-    public class Product
+    public class Employee
     {
         [Key]
         public int Id { get; set; }
 
-        [Column(TypeName ="Varchar")]
-        [StringLength(50)]
-        public string ProductName { get; set; }
+        [Column(TypeName = "Varchar")]
+        [StringLength(30)]
+        public string FirstName { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
-        public string Brand { get; set; }
-        public int StockAmount { get; set; }
-        public decimal PurchasePrice { get; set; }
-        public decimal SalePrice { get; set; }
-        public bool Status { get; set; }
+        public string LastName { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(250)]
         public string Image { get; set; }
 
-
-
-        public Category Category { get; set; }
         public Sale Sale { get; set; }
 
-
+        public EmployeeDepartment EmployeeDepartment { get; set; }
     }
 }

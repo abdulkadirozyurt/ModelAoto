@@ -7,19 +7,22 @@ using System.Web;
 
 namespace ModelAoto.Models.Entities
 {
-    public class Category
+    public class Admin
     {
         [Key]
         public int Id { get; set; }
 
         [Column(TypeName = "Varchar")]
-        [StringLength(40)]
-        public string CategoryName { get; set; }
+        [StringLength(15)]
+        public string Username { get; set; }
 
+        [Column(TypeName = "Varchar")]
+        [StringLength(30)]
+        public string Password { get; set; }
 
-
-        public ICollection<Product> Products { get; set; }
-
+        [Column(TypeName = "Varchar")]
+        [StringLength(1)]
+        public string Authority { get; set; }
 
     }
 }

@@ -7,19 +7,19 @@ using System.Web;
 
 namespace ModelAoto.Models.Entities
 {
-    public class Category
+    public class InvoiceDetail
     {
         [Key]
         public int Id { get; set; }
 
         [Column(TypeName = "Varchar")]
-        [StringLength(40)]
-        public string CategoryName { get; set; }
+        [StringLength(200)]
+        public string Description { get; set; }
+        public int QuantityPerUnit { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal Price { get; set; }
 
 
-
-        public ICollection<Product> Products { get; set; }
-
-
+        public Invoice Invoice { get; set; }
     }
 }
