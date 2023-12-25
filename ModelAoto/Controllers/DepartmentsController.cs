@@ -43,6 +43,14 @@ namespace ModelAoto.Controllers
             return View(employees);
         }
 
+        public ActionResult EmployeeSalesDetails(int id)
+        {
+            var employeeSales = db.Sales.Where(x => x.EmployeeId == id).ToList();
+            var employeeName= db.Employees.Where(x=>x.Id==id).Select(y => y.FirstName + " " + y.LastName).FirstOrDefault();
+            ViewBag.employeeName = employeeName;
+            return View(employeeSales);
+        }
+
         public ActionResult Delete(int id)
         {
             var department = db.EmployeeDepartments.Find(id);
