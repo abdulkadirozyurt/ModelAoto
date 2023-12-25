@@ -1,0 +1,35 @@
+﻿@model List<ModelAoto.Models.Entities.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Index</h2>
+<br />
+
+<a href="/Customers/Add/" class="btn btn-outline-primary">Yeni Müşteri</a>
+<table class="table table-striped mt-2">
+    <tr>
+        <th>Müşteri Adı</th>
+        <th>Müşteri Soyadı</th>
+        <th>Şehir</th>
+        <th>Mail</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.City</td>
+            <td>@item.Mail</td>
+            <td>
+                <a href="//Customers/Details/@item.Id" class="btn btn-warning">Satış Geçmişi</a>
+                <a href="/Customers/Update/@item.Id" class="btn btn-success">Güncelle</a>
+                <a href="/Customers/Delete/@item.Id" class="btn btn-danger">Sil</a>
+
+            </td>
+        </tr>
+    }
+</table>
