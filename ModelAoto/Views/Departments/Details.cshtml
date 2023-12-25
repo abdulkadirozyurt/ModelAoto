@@ -1,4 +1,4 @@
-﻿@model ModelAoto.Models.Entities.EmployeeDepartment
+﻿@model List<ModelAoto.Models.Entities.Employee>
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,10 +8,11 @@
 <h2>Departman Detayları</h2>
 <br />
 
-<div style="background-color: darkgray">
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
 
-</div>
-<br />
+
 
 <table class="table table-hover">
     <tr>
@@ -21,10 +22,13 @@
         <th></th>
     </tr>
 
-    <tr>
-        @foreach (var item in Model)
-        {
-            v
-        }
-    </tr>
+   @foreach (var item in Model)
+   {
+       <tr>
+           <td>@item.Image</td>
+           <td>@item.FirstName</td>
+           <td>@item.LastName</td>
+
+       </tr>
+   }
 </table>

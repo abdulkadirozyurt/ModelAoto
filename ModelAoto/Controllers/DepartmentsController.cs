@@ -37,9 +37,10 @@ namespace ModelAoto.Controllers
 
         public ActionResult Details(int id)
         {
+            var employees = db.Employees.Where(x => x.EmployeeDepartmentId == id).ToList();
 
 
-            return View();
+            return View(employees);
         }
 
         public ActionResult Delete(int id)
