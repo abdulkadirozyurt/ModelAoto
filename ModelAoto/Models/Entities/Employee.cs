@@ -27,5 +27,6 @@ namespace ModelAoto.Models.Entities
         public ICollection<Sale> Sales { get; set; }
 
         public EmployeeDepartment EmployeeDepartment { get; set; }
+        public int EmployeeDepartmentId { get; set; }
     }
 }
