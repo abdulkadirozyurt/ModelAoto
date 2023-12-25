@@ -1,0 +1,36 @@
+﻿@*@using ModelAoto.Models.Entities*@
+@model List<ModelAoto.Models.Entities.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<a class="btn btn-primary text-white my-3 " href="/Categories/AddCategory/">Yeni Kategori</a>
+
+<table class="table table-bordered">
+
+
+    <tr>
+        @*<th>#</th>*@
+        <th>Kategori Adı</th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>@item.Id</td>*@
+            <td>@item.CategoryName</td>
+            <td>
+                <a href="/Categories/UpdateCategory/@item.Id" class="btn btn-outline-success">Güncelle</a>
+                <a href="/Categories/DeleteCategory/@item.Id" class="btn btn-outline-danger">Sil</a>
+            </td>
+        </tr>
+
+    }
+
+
+</table>
+
+
+

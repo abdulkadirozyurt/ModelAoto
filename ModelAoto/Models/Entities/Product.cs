@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,13 +13,20 @@ namespace ModelAoto.Models.Entities
         [Key]
         public int Id { get; set; }
 
-        [Column(TypeName ="Varchar")]
-        [StringLength(50)]
+        [Column(TypeName = "Varchar")]
+        [StringLength(500)]
+        [DisplayName("Ürün Adı")]
         public string ProductName { get; set; }
 
         [Column(TypeName = "Varchar")]
-        [StringLength(30)]
-        public string Brand { get; set; }
+        [StringLength(500)]
+        [DisplayName("Ürün Açıklaması")]
+        public string Description { get; set; }
+
+        //[Column(TypeName = "Varchar")]
+        //[StringLength(30)]      
+
+        //public string Brand { get; set; }
         public int StockAmount { get; set; }
         public decimal PurchasePrice { get; set; }
         public decimal SalePrice { get; set; }
@@ -30,8 +38,15 @@ namespace ModelAoto.Models.Entities
 
 
 
-        public Category Category { get; set; }
-        public Sale Sale { get; set; }
+        public virtual Category Category { get; set; }
+        public int CategoryId { get; set; }
+        
+
+        public virtual Brand Brand { get; set; }
+        public int BrandId { get; set; }
+
+
+        public ICollection<Sale> Sales { get; set; }
 
 
     }

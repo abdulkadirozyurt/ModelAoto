@@ -24,7 +24,7 @@ namespace ModelAoto.Models.Entities
         [StringLength(250)]
         public string Image { get; set; }
 
-        public Sale Sale { get; set; }
+        public ICollection<Sale> Sales { get; set; }
 
         public EmployeeDepartment EmployeeDepartment { get; set; }
     }

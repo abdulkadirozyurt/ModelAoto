@@ -7,10 +7,11 @@ using System.Web;
 
 namespace ModelAoto.Models.Contexts
 {
-    public class ModelAotoContext : DbContext
+    public class ModelAotoDbContext : DbContext
     {
 
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Brand> Brands { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<EmployeeDepartment> EmployeeDepartments { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }

@@ -1,0 +1,48 @@
+﻿@model List<ModelAoto.Models.Entities.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Ürünler</h2>
+<br />
+<a class="btn btn-outline-primary mb-2" href="/Products/Add/">Ürün Ekle</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Fotoğraf</th>
+        <th>Ürün Adı</th>
+        <th>Marka</th>
+        <th>Kategori</th>
+        <th>Stok Miktarı</th>
+        <th>Alış Fiyatı</th>
+        <th>Satış Fiyatı</th>
+        <th>Durum</th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Image</td>
+            <td>@item.ProductName</td>
+            <td>@item.Brand.BrandName</td>
+            <td>@item.Category.CategoryName</td>
+            <td>@item.StockAmount</td>
+            <td>@item.PurchasePrice</td>
+            <td>@item.SalePrice</td>
+            <td>@item.Status</td>
+            <td>
+                <a href="/Products/Update/@item.Id" class="btn btn-outline-success">Güncelle</a>
+                <a href="/Products/Delete/@item.Id" class="btn btn-outline-danger">Sil</a>
+            </td>
+
+
+
+
+        </tr>
+    }
+
+
+</table>
+

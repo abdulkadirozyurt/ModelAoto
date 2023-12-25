@@ -28,5 +28,7 @@ namespace ModelAoto.Models.Entities
         [StringLength(50)]
         public string Mail { get; set; }
 
+
+        public ICollection<Sale> Sales { get; set; }
     }
 }
