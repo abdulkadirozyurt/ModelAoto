@@ -1,0 +1,41 @@
+﻿@model List<ModelAoto.Models.Entities.EmployeeDepartment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Departmanlar</h2>
+<br />
+<a class="btn btn-outline-primary mb-2" href="/Departments/Add/">Departman Ekle</a>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Departman Adı</th>
+        <th>Durum</th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DepartmentName</td>
+            <td>@item.Status</td>
+
+            <td>
+                <a href="/Departments/Details/@item.Id" class="btn btn-outline-warning">Detaylar</a>
+                <a href="/Departments/Update/@item.Id" class="btn btn-outline-success">Güncelle</a>
+                <a href="/Departments/Delete/@item.Id" class="btn btn-outline-danger">Sil</a>
+
+
+            </td>
+
+
+
+
+        </tr>
+    }
+
+
+</table>
+

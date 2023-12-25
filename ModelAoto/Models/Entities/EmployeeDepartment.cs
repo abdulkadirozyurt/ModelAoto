@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace ModelAoto.Models.Entities
 
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
-        public string DepartmentName { get; set; }  
+        public string DepartmentName { get; set; }
+
+        [DisplayName("Durum")]
+        public bool Status { get; set; }
 
 
         public ICollection<Employee> Employees { get; set;}

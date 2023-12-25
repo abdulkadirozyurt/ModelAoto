@@ -1,0 +1,21 @@
+﻿@model ModelAoto.Models.Entities.Brand
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br>
+<h2>Yeni Marka</h2>
+<br>
+
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.BrandName)
+    @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control" })
+    <br />
+
+   
+
+    <button class="btn btn-outline-primary">Ekle</button>
+</form>
+

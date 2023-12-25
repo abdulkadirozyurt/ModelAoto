@@ -1,14 +1,17 @@
 ﻿@model ModelAoto.Models.Entities.Product
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<br />
+<h2>Ürün Güncelle</h2>
+<br />
 
-<br>
-<h2>Yeni Ürün</h2>
-<br>
 
-<form class="form-group" method="post">
+
+
+@using (Html.BeginForm("Update", "Products", FormMethod.Post))
+{
 
     @Html.LabelFor(x => x.ProductName)
     @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
@@ -19,7 +22,7 @@
     <br />
 
     @Html.LabelFor(x => x.Brand.BrandName)
-    @Html.DropDownListFor(x=>x.BrandId, (List<SelectListItem>)ViewBag.brands, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.BrandId, (List<SelectListItem>)ViewBag.brands, new { @class = "form-control" })
     @*@Html.TextBoxFor(x => x.BrandId, new { @class = "form-control" })*@
     <br />
 
@@ -47,6 +50,7 @@
     @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
     <br />
 
-    <button class="btn btn-outline-primary">Ekle</button>
-</form>
+    <button class="btn btn-outline-primary">Güncelle</button>
 
+
+}

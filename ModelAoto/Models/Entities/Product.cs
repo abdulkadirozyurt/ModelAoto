@@ -23,17 +23,22 @@ namespace ModelAoto.Models.Entities
         [DisplayName("Ürün Açıklaması")]
         public string Description { get; set; }
 
-        //[Column(TypeName = "Varchar")]
-        //[StringLength(30)]      
 
-        //public string Brand { get; set; }
+        [DisplayName("Stok Miktarı")]
         public int StockAmount { get; set; }
+
+        [DisplayName("Alış Fiyatı")]
         public decimal PurchasePrice { get; set; }
+
+        [DisplayName("Satış Fiyatı")]
         public decimal SalePrice { get; set; }
+
+        [DisplayName("Durum")]
         public bool Status { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(250)]
+        [DisplayName("Fotoğraf")]
         public string Image { get; set; }
 
 

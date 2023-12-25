@@ -1,0 +1,24 @@
+﻿@model ModelAoto.Models.Entities.Brand
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Marka Güncelle</h2>
+<br />
+
+
+
+
+@using (Html.BeginForm("Update", "Brands", FormMethod.Post))
+{
+
+    @Html.LabelFor(x => x.BrandName)
+    @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-outline-primary">Güncelle</button>
+
+
+}

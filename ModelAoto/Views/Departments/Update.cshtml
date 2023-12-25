@@ -1,0 +1,22 @@
+﻿@model ModelAoto.Models.Entities.EmployeeDepartment
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Güncelle</h2>
+<br />
+
+@using (Html.BeginForm("Update", "Departments", FormMethod.Post,new {@class="form-group"}))
+{
+    @Html.LabelFor(x => x.DepartmentName)
+    @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Status)
+    @Html.CheckBoxFor(x => x.Status)
+    <br />
+
+    <button class="btn btn-outline-primary">Kaydet</button>
+}
+

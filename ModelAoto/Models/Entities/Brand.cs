@@ -15,6 +15,8 @@ namespace ModelAoto.Models.Entities
         [DisplayName("Marka Adı")]
         public string BrandName { get; set; }
 
+        public string Image { get; set; }
+
         public ICollection<Product> Products { get; set; }
     }
 }
