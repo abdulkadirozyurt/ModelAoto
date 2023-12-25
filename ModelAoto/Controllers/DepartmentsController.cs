@@ -38,8 +38,8 @@ namespace ModelAoto.Controllers
         public ActionResult Details(int id)
         {
             var employees = db.Employees.Where(x => x.EmployeeDepartmentId == id).ToList();
-
-
+            var department = db.EmployeeDepartments.Where(x => x.Id == id).Select(y => y.DepartmentName).FirstOrDefault();
+            ViewBag.department = department;
             return View(employees);
         }
 
