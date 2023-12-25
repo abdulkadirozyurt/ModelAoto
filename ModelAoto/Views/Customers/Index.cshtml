@@ -13,7 +13,9 @@
         <th>Müşteri Adı</th>
         <th>Müşteri Soyadı</th>
         <th>Şehir</th>
+        <th>İlçe</th>
         <th>Mail</th>
+        <th>Durum</th>
         <th></th>
     </tr>
 
@@ -22,8 +24,11 @@
         <tr>
             <td>@item.FirstName</td>
             <td>@item.LastName</td>
-            <td>@item.City</td>
+            <td>@item.City.CityName</td>
+            <td>@item.District.DistrictName</td>
             <td>@item.Mail</td>
+            <td>@item.Status</td>
+
             <td>
                 <a href="//Customers/Details/@item.Id" class="btn btn-warning">Satış Geçmişi</a>
                 <a href="/Customers/Update/@item.Id" class="btn btn-success">Güncelle</a>

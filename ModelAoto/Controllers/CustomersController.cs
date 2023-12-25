@@ -21,8 +21,26 @@ namespace ModelAoto.Controllers
         [HttpGet]
         public ActionResult Add()
         {
+            List<SelectListItem> cities = db.Cities.Select(x => new SelectListItem
+            {
+                Text = x.CityName,
+                Value = x.Id.ToString(),
+            }).ToList();
 
+
+            List<SelectListItem> districts = db.Districts.Select(y => new SelectListItem
+            {
+
+                Text = y.DistrictName,
+                Value = y.Id.ToString()
+            }).ToList();
+
+
+            ViewBag.Cities = cities;
+            ViewBag.Districts = districts;
             return View();
+
+
         }
 
         [HttpPost]
@@ -30,6 +48,61 @@ namespace ModelAoto.Controllers
         {
             db.Customers.Add(customer);
             db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var customer = db.Customers.Find(id);
+            customer.Status = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            List<SelectListItem> cities = db.Cities.Select(x => new SelectListItem
+            {
+                Text = x.CityName,
+                Value = x.Id.ToString(),
+            }).ToList();
+
+
+            List<SelectListItem> districts = db.Districts.Select(y => new SelectListItem
+            {
+
+                Text = y.DistrictName,
+                Value = y.Id.ToString()
+            }).ToList();
+
+            var customer = db.Customers.Find(id);
+
+
+            ViewBag.Cities = cities;
+            ViewBag.Districts = districts;
+            return View(customer);
+
+
+        }
+
+        [HttpPost]
+        public ActionResult Update(Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update");
+            }
+            var customerToUpdate = db.Customers.Find(customer.Id);
+
+            customerToUpdate.FirstName=customer.FirstName;  
+            customerToUpdate.LastName=customer.LastName;
+            customerToUpdate.CityId = customer.CityId;
+            customerToUpdate.DistrictId = customer.DistrictId;
+            customerToUpdate.Mail = customer.Mail;
+            customerToUpdate.Status = customer.Status;
+
+            db.SaveChanges();            
             return RedirectToAction("Index");
         }
     }

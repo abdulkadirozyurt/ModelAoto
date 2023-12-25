@@ -1,26 +1,27 @@
 ﻿@model ModelAoto.Models.Entities.Customer
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<br />
+<h2>Müşteri Güncelle</h2>
+<br />
 
-
-<br>
-<h2>Yeni Müşteri</h2>
-<br>
-
-<form class="form-group" method="post">
-
+@using (Html.BeginForm("Update", "Customers", FormMethod.Post))
+{
     @Html.LabelFor(x => x.FirstName)
     @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })
     <br />
 
     @Html.LabelFor(x => x.LastName)
     @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.LastName, "", new { @style = "color:red" })
     <br />
 
     @Html.LabelFor(x => x.City.CityName)
     @Html.DropDownListFor(x => x.CityId, (List<SelectListItem>)ViewBag.Cities, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })
     <br />
 
     @Html.LabelFor(x => x.District.DistrictName)
@@ -28,12 +29,15 @@
     <br />
 
     @Html.LabelFor(x => x.Mail)
-    @Html.TextBoxFor(x => x.Mail,  new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Status)
+    @Html.CheckBoxFor(x => x.Status)
     <br />
 
 
 
-
-    <button class="btn btn-outline-primary">Ekle</button>
-</form>
+    <button class="btn btn-outline-primary">Güncelle</button>
+}
 

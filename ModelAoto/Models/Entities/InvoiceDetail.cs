@@ -20,6 +20,7 @@ namespace ModelAoto.Models.Entities
         public decimal Price { get; set; }
 
 
-        public Invoice Invoice { get; set; }
+        public virtual Invoice Invoice { get; set; }
+        public int InvoiceId {  get; set; }
     }
 }

@@ -141,7 +141,9 @@
     <Compile Include="Models\Entities\Admin.cs" />
     <Compile Include="Models\Entities\Brand.cs" />
     <Compile Include="Models\Entities\Category.cs" />
+    <Compile Include="Models\Entities\City.cs" />
     <Compile Include="Models\Entities\Customer.cs" />
+    <Compile Include="Models\Entities\District.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\EmployeeDepartment.cs" />
     <Compile Include="Models\Entities\Expense.cs" />
@@ -312,6 +314,7 @@
     <Content Include="Views\Departments\EmployeeSalesDetails.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Add.cshtml" />
+    <Content Include="Views\Customers\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
