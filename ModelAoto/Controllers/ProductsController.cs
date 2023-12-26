@@ -19,6 +19,44 @@ namespace ModelAoto.Controllers
             return View(products);
         }
 
+        public ActionResult IndexMain()
+        {
+            var products = db.Products.ToList();
+
+            return View(products);
+        }
+
+
+
+        public ActionResult IndexSortBrands()
+        {
+            var products = db.Products.OrderByDescending(x => x.BrandId).ToList();
+
+            return View(products);
+        }
+
+        public ActionResult IndexSortScales()
+        {
+            var products = db.Products.OrderByDescending(x => x.CategoryId).ToList();
+
+            return View(products);
+        }
+
+        // GET: Products
+        public ActionResult IndexMiniGt()
+        {
+            var products = db.Products.Where(x => x.BrandId == 1).ToList();
+
+            return View(products);
+        }
+
+        public ActionResult IndexGreenLight()
+        {
+            var products = db.Products.Where(x => x.BrandId == 2).ToList();
+
+            return View(products);
+        }
+
         [HttpGet]
         public ActionResult Add()
         {
@@ -30,11 +68,11 @@ namespace ModelAoto.Controllers
                                                }).ToList();
 
             List<SelectListItem> brands = (from x in db.Brands.ToList()
-                                               select new SelectListItem
-                                               {
-                                                   Text = x.BrandName,
-                                                   Value = x.Id.ToString(),
-                                               }).ToList();
+                                           select new SelectListItem
+                                           {
+                                               Text = x.BrandName,
+                                               Value = x.Id.ToString(),
+                                           }).ToList();
 
             ViewBag.categories = categories;
             ViewBag.brands = brands;
@@ -64,7 +102,7 @@ namespace ModelAoto.Controllers
         public ActionResult Update(int id)
         {
             var product = db.Products.Find(id);
-            
+
             List<SelectListItem> categories = (from x in db.Categories.ToList()
                                                select new SelectListItem
                                                {
@@ -87,7 +125,7 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public ActionResult Update(Product product)
         {
-            var productToUpdate=db.Products.Find(product.Id);
+            var productToUpdate = db.Products.Find(product.Id);
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.Description = product.Description;
             productToUpdate.StockAmount = product.StockAmount;
@@ -98,7 +136,7 @@ namespace ModelAoto.Controllers
             productToUpdate.CategoryId = product.CategoryId;
             productToUpdate.BrandId = product.BrandId;
 
-           
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

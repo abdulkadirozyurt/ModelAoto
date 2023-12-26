@@ -114,5 +114,19 @@ namespace ModelAoto.Controllers
             ViewBag.CustomerName=customerName;
             return View(purchases);
         }
+
+
+
+
+
+
+
+
+
+
+        public ActionResult deneme() {
+        
+            return View();
+        }
     }
 }
