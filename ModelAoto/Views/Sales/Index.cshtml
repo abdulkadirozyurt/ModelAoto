@@ -1,0 +1,48 @@
+﻿@model List<ModelAoto.Models.Entities.Sale>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satışlar</h2>
+<br />
+<a class="btn btn-outline-primary mb-2" href="/Sales/Add/">Yeni Satış</a>
+<table class="table table-bordered table-striped">
+    <tr>
+       
+        <th>Ürün Adı</th>
+        <th>Müşteri Adı</th>
+        <th>Satış Yapan Personel</th>
+        <th>Birim Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam Fiyat</th>
+        <th>Tarih</th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Customer.FirstName @item.Customer.LastName</td>
+            <td>@item.Employee.FirstName @item.Employee.LastName </td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>@item.TotalPrice</td>
+            <td>@item.Date.ToShortDateString() @item.Date.ToShortTimeString()</td>
+            <td>
+                <a href="/Sales/Update/@item.Id" class="btn btn-outline-success">Güncelle</a>
+                <a href="/Departments/EmployeeSalesDetails/@item.Id" class="btn btn-warning">Detaylar</a>
+
+            </td>
+
+
+
+
+        </tr>
+    }
+
+
+</table>

@@ -1,0 +1,41 @@
+﻿@model ModelAoto.Models.Entities.Employee
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Güncelle</h2>
+<br />
+
+@using (Html.BeginForm("Update", "Employees", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.FirstName)
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })*@
+    <br />
+
+    @Html.LabelFor(x => x.LastName)
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.LastName, "", new { @style = "color:red" })*@
+    <br />
+
+    @Html.LabelFor(x => x.EmployeeDepartment.DepartmentName)
+    @Html.DropDownListFor(x => x.EmployeeDepartmentId, (List<SelectListItem>)ViewBag.Departments, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })*@
+    <br />
+
+   
+
+    @Html.LabelFor(x => x.Image)
+    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+    <br />
+
+    @*@Html.LabelFor(x => x.Status)
+    @Html.CheckBoxFor(x => x.Status)
+    <br />*@
+
+
+
+    <button class="btn btn-outline-primary">Güncelle</button>
+}
+

@@ -1,0 +1,40 @@
+﻿@model List<ModelAoto.Models.Entities.Sale>
+@{
+    ViewBag.Title = "PurchaseHistory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>PurchaseHistory</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Müşteri Adı - @ViewBag.CustomerName</li>
+</ol>
+
+<table class="table table-striped">
+    <tr>
+        <th>Ürün Adı</th>        
+        <th>Personel</th>        
+        <th>Birim Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam Fiyat</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Employee.FirstName @item.Employee.LastName</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>@item.TotalPrice</td>
+            <td>@item.Date</td>
+            <td><a href="#" class="btn btn-outline-primary"><i class="fa-solid fa-print"></i>Yazdır</a></td>
+
+
+        </tr>
+    }
+
+
+</table>

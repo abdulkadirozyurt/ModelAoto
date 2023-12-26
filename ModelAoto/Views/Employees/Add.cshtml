@@ -1,0 +1,35 @@
+﻿@model ModelAoto.Models.Entities.Employee
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br>
+<h2>Yeni Personel</h2>
+<br>
+
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.FirstName)
+    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.LastName)
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.EmployeeDepartment.DepartmentName)
+    @Html.DropDownListFor(x => x.EmployeeDepartmentId, (List<SelectListItem>)ViewBag.Departments, new { @class = "form-control" })
+    
+    <br />
+
+
+    @Html.LabelFor(x => x.Image)
+    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+    <br />
+
+   
+
+    <button class="btn btn-outline-primary">Ekle</button>
+</form>
+

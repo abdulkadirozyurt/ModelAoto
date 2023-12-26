@@ -16,6 +16,7 @@ namespace ModelAoto.Models.Entities
 
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
+        [DisplayName("Departman Adı")]
         public string DepartmentName { get; set; }
 
         [DisplayName("Durum")]

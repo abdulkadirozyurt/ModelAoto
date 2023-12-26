@@ -105,5 +105,14 @@ namespace ModelAoto.Controllers
             db.SaveChanges();            
             return RedirectToAction("Index");
         }
+
+        public ActionResult PurchaseHistory(int id)
+        {
+            var purchases = db.Sales.Where(x => x.CustomerId == id).ToList();
+            var customerName = db.Customers.Where(x=>x.Id==id).Select(y=>y.FirstName+" "+y.LastName).FirstOrDefault();    
+                
+            ViewBag.CustomerName=customerName;
+            return View(purchases);
+        }
     }
 }
