@@ -8,43 +8,65 @@
 <h2>Satışlar</h2>
 <br />
 <a class="btn btn-outline-primary mb-2" href="/Sales/Add/">Yeni Satış</a>
-<table class="table table-bordered table-striped">
-    <tr>
-       
-        <th>Ürün Adı</th>
-        <th>Marka</th>
-        <th>Müşteri Adı</th>
-        <th>Satış Yapan Personel</th>
-        <th>Birim Fiyat</th>
-        <th>Adet</th>
-        <th>Toplam Fiyat</th>
-        <th>Tarih</th>
-        <th></th>
+<table id="SalesIndex" class="table table-bordered mt-2">
 
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <thead>
         <tr>
-            <td>@item.Product.ProductName</td>
-            <td>@item.Product.Brand.BrandName</td>
-            <td>@item.Customer.FirstName @item.Customer.LastName</td>
-            <td>@item.Employee.FirstName @item.Employee.LastName </td>
-            <td>@item.Price</td>
-            <td>@item.Quantity</td>
-            <td>@item.TotalPrice</td>
-            <td>@item.Date.ToShortDateString() @item.Date.ToShortTimeString()</td>
-            <td>
-                <a href="/Sales/Update/@item.Id" class="btn btn-outline-success">Güncelle</a>
-                <a href="/Sales/SaleDetails/@item.Id" class="btn btn-warning">Detaylar</a>
 
-            </td>
-
-
-
+            <th>Ürün Adı</th>
+            <th>Marka</th>
+            <th>Müşteri Adı</th>
+            <th>Satış Yapan Personel</th>
+            <th>Birim Fiyat</th>
+            <th>Adet</th>
+            <th>Toplam Fiyat</th>
+            <th>Tarih</th>
+            <th></th>
 
         </tr>
-    }
+    </thead>
+    <tbody>
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product.ProductName</td>
+                <td>@item.Product.Brand.BrandName</td>
+                <td>@item.Customer.FirstName @item.Customer.LastName</td>
+                <td>@item.Employee.FirstName @item.Employee.LastName </td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.Date.ToShortDateString() @item.Date.ToShortTimeString()</td>
+                <td>
+                    <a href="/Sales/Update/@item.Id" class="btn btn-outline-success">Güncelle</a>
+                    <a href="/Sales/SaleDetails/@item.Id" class="btn btn-warning">Detaylar</a>
 
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+<script>
+    $('#SalesIndex').dataTable({});
+</script>
+
+
+
