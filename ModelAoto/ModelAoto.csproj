@@ -402,6 +402,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000516.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000529.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000533.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000537.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000548.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000552.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000557.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000603.png" />
+    <Content Include="screenshots\Ekran görüntüsü 2023-12-27 000625.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -568,7 +577,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="screenshots\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
