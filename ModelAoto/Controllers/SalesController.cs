@@ -105,12 +105,29 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public ActionResult Update(Sale sale)
         {
-            sale.Date = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
-            db.Sales.Add(sale);
+            var saleToUpdate = db.Sales.Find(sale.Id);
+
+            saleToUpdate.ProductId=sale.ProductId;
+            saleToUpdate.CustomerId=sale.CustomerId;
+            saleToUpdate.EmployeeId=sale.EmployeeId;
+            saleToUpdate.Quantity=sale.Quantity;
+            saleToUpdate.Price=sale.Price;
+            saleToUpdate.TotalPrice=sale.TotalPrice;
+            saleToUpdate.Date = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+            
             db.SaveChanges();
 
 
             return RedirectToAction("Index");
+        }
+
+
+
+        public ActionResult SaleDetails(int id)
+        {
+            var details = db.Sales.Where(x=>x.Id==id).ToList();
+
+            return View(details);
         }
     }
 }

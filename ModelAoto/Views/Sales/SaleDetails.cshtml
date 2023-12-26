@@ -1,0 +1,38 @@
+﻿
+@model List<ModelAoto.Models.Entities.Sale>
+@{
+    ViewBag.Title = "SaleDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Detayları</h2>
+<br />
+
+<table class="table table-condensed">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Müşteri Adı</th>
+        <th>Personel Adı</th>
+        <th>Birim Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam Fiyat</th>
+        <th>Tarih</th>        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Customer.FirstName @item.Customer.LastName</td>
+            <td>@item.Employee.FirstName @item.Employee.LastName</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>@item.TotalPrice</td>
+            <td>@item.Date</td>
+        </tr>
+    }
+</table>
+
+<a href="#" class="btn btn-outline-primary mt-2"><i class="fa-solid fa-print"></i>Yazdır</a>
