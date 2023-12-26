@@ -1,11 +1,13 @@
-﻿@model ModelAoto.Models.Entities.Sale
+﻿
+
+@model ModelAoto.Models.Entities.Sale
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <br>
-<h2>Yeni Satış</h2>
+<h2>Satış Güncelle</h2>
 <br>
 
 <form class="form-group" method="post">
@@ -14,9 +16,9 @@
     @Html.DropDownListFor(x => x.ProductId, (List<SelectListItem>)ViewBag.Products, new { @class = "form-control" })
     <br />
 
-    @Html.LabelFor(x => x.Product.Brand.BrandName)
+    @*@Html.LabelFor(x => x.Product.Brand.BrandName)
     @Html.DropDownListFor(x => x.Product.BrandId, (List<SelectListItem>)ViewBag.Brands, new { @class = "form-control" })
-    <br />
+    <br />*@
 
     @Html.Label("Müşteri")
     @Html.DropDownListFor(x => x.CustomerId, (List<SelectListItem>)ViewBag.Customers, new { @class = "form-control" })
@@ -39,9 +41,14 @@
     @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control" })
     <br />
 
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date , new { @class = "form-control" })
+    <br />
 
 
 
-    <button class="btn btn-outline-primary">Satış Yap</button>
+
+    <button class="btn btn-outline-primary">Kaydet</button>
 </form>
+
 

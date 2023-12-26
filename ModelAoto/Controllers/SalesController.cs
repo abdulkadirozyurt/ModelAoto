@@ -28,6 +28,12 @@ namespace ModelAoto.Controllers
                 Value = x.Id.ToString(),
             }).ToList();
 
+            List<SelectListItem> brands = db.Brands.Select(x => new SelectListItem
+            {
+                Text = x.BrandName,
+                Value = x.Id.ToString(),
+            }).ToList();
+
             List<SelectListItem> customers = db.Customers.Select(x => new SelectListItem
             {
                 Text = x.FirstName + " " + x.LastName,
@@ -43,13 +49,63 @@ namespace ModelAoto.Controllers
             ViewBag.Products = products;
             ViewBag.Customers = customers;
             ViewBag.Employees = employees;
+            ViewBag.Brands = brands;
             return View();
         }
 
         [HttpPost]
         public ActionResult Add(Sale sale)
         {
-            sale.Date= DateTime.Parse(DateTime.Now.ToShortDateString()+" "+DateTime.Now.ToShortTimeString());
+            sale.Date = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+            db.Sales.Add(sale);
+            db.SaveChanges();
+
+
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var sale = db.Sales.Find(id);
+            sale.Date = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+
+            List<SelectListItem> products = db.Products.Select(x => new SelectListItem
+            {
+                Text = x.ProductName,
+                Value = x.Id.ToString(),
+            }).ToList();
+
+            List<SelectListItem> brands = db.Brands.Select(x => new SelectListItem
+            {
+                Text = x.BrandName,
+                Value = x.Id.ToString(),
+            }).ToList();
+
+            List<SelectListItem> customers = db.Customers.Select(x => new SelectListItem
+            {
+                Text = x.FirstName + " " + x.LastName,
+                Value = x.Id.ToString(),
+            }).ToList();
+
+            List<SelectListItem> employees = db.Employees.Select(x => new SelectListItem
+            {
+                Text = x.FirstName + " " + x.LastName,
+                Value = x.Id.ToString(),
+            }).ToList();
+
+            ViewBag.Products = products;
+            ViewBag.Customers = customers;
+            ViewBag.Employees = employees;
+            ViewBag.Brands = brands;
+            return View(sale);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Sale sale)
+        {
+            sale.Date = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
             db.Sales.Add(sale);
             db.SaveChanges();
 

@@ -323,6 +323,7 @@
     <Content Include="Views\Employees\Update.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Sales\Add.cshtml" />
+    <Content Include="Views\Sales\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
