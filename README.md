@@ -16,7 +16,5 @@
 
 ![alt text](https://github.com/abdulkadirozyurt/ModelAoto/blob/master/ModelAoto/screenshots/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202023-12-27%20000625.png)
 
-![alt text](/ModelAoto/screenshots/Ekran görüntüsü 2023-12-27 000625.png)
 
-![alt text](/ModelAoto/screenshots/Ekran görüntüsü 2023-12-27 000625.png)
 
