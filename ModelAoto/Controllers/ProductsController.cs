@@ -102,5 +102,12 @@ namespace ModelAoto.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult ProductList()
+        {
+            var products = db.Products.ToList();
+
+            return View(products);
+        }
     }
 }
