@@ -1,0 +1,49 @@
+﻿@model ModelAoto.Models.Entities.Invoice
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Güncelle</h2>
+<br />
+
+
+
+
+@using (Html.BeginForm("Update", "Invoices", FormMethod.Post))
+{
+
+    @Html.LabelFor(x => x.SerialNumber)
+    @Html.TextBoxFor(x => x.SerialNumber, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.InvoiceNo)
+    @Html.TextBoxFor(x => x.InvoiceNo, new { @class = "form-control" })
+    <br /> 
+
+    @Html.LabelFor(x => x.TaxOffice)
+    @Html.TextBoxFor(x => x.TaxOffice, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Time)
+    @Html.TextBoxFor(x => x.Time, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Sender)
+    @Html.TextBoxFor(x => x.Sender, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Reciepent)
+    @Html.TextBoxFor(x => x.Reciepent, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-outline-primary">Güncelle</button>
+
+
+}
+

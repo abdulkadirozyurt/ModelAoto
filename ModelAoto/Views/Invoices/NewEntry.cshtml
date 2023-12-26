@@ -1,0 +1,38 @@
+﻿@model ModelAoto.Models.Entities.InvoiceDetail
+@{
+    ViewBag.Title = "NewEntry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Giriş</h2>
+<br />
+
+
+<form class="form-group" method="post">
+
+
+    @Html.LabelFor(x => x.Description)
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.QuantityPerUnit)
+    @Html.TextBoxFor(x => x.QuantityPerUnit, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.UnitPrice)
+    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Price)
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.InvoiceId)
+    @Html.TextBoxFor(x => x.InvoiceId, new { @class = "form-control" })
+    <br />
+
+   
+    <button class="btn btn-primary">Kaydet</button>
+
+</form>

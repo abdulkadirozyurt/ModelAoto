@@ -14,13 +14,17 @@ namespace ModelAoto.Models.Entities
 
         [Column(TypeName = "Char")]
         [StringLength(1)]
-        public char SerialNumber { get; set; }
+        public string SerialNumber { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(6)]
         public string InvoiceNo { get; set; }
+
         public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
+
+        [Column(TypeName = "char")]
+        [StringLength(5)]
+        public string Time { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(60)]
@@ -33,6 +37,9 @@ namespace ModelAoto.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string Reciepent { get; set; }
+
+        public decimal TotalCost { get; set; }
+
         public bool Status { get; set; }
 
 
