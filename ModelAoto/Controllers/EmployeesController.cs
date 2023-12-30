@@ -2,6 +2,7 @@
 using ModelAoto.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,6 +35,15 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public ActionResult Add(Employee employee)
         {
+            if (Request.Files.Count > 0)  // yani yaptığım işlemler içerisinde bir dosya mevcutsa 
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);
+                string fileExtension = Path.GetExtension(Request.Files[0].FileName);
+                string filePath="~/images/"+fileName+fileExtension;
+                Request.Files[0].SaveAs(Server.MapPath(filePath));
+                employee.Image = "/images/" + fileName + fileExtension;
+            }
+
             db.Employees.Add(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -59,18 +69,27 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public ActionResult Update(Employee employee)
         {
+            if (Request.Files.Count > 0)  // yani yaptığım işlemler içerisinde bir dosya mevcutsa 
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);
+                string fileExtension = Path.GetExtension(Request.Files[0].FileName);
+                string filePath = "~/images/" + fileName + fileExtension;
+                Request.Files[0].SaveAs(Server.MapPath(filePath));
+                employee.Image = "/images/" + fileName + fileExtension;
+            }
+
             var employeeToUpdate = db.Employees.Find(employee.Id);
             employeeToUpdate.FirstName = employee.FirstName;
             employeeToUpdate.LastName = employeeToUpdate.LastName;
             employeeToUpdate.EmployeeDepartmentId = employee.EmployeeDepartmentId;
             employeeToUpdate.Image = employee.Image;
 
-            db.SaveChanges();          
+            db.SaveChanges();
             return RedirectToAction("Index");
 
         }
 
-       
+
 
 
 

@@ -7,6 +7,9 @@
 <br>
 <h2>Yeni Ürün</h2>
 <br>
+                                                            @* file upload için begin form ve bu kısım gerekli *@
+@using (Html.BeginForm("Add", "Products", FormMethod.Post, new {enctype="multipart/form-data"}))
+{ 
 
 <form class="form-group" method="post">
 
@@ -19,7 +22,7 @@
     <br />
 
     @Html.LabelFor(x => x.Brand.BrandName)
-    @Html.DropDownListFor(x=>x.BrandId, (List<SelectListItem>)ViewBag.brands, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.BrandId, (List<SelectListItem>)ViewBag.brands, new { @class = "form-control" })
     @*@Html.TextBoxFor(x => x.BrandId, new { @class = "form-control" })*@
     <br />
 
@@ -44,9 +47,11 @@
     <br />
 
     @Html.LabelFor(x => x.Image)
-    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+    <input type="file" name="Image" />
     <br />
 
     <button class="btn btn-outline-primary">Ekle</button>
 </form>
+
+}
 

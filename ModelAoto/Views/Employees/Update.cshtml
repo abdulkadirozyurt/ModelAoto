@@ -7,35 +7,37 @@
 <h2>Personel Güncelle</h2>
 <br />
 
-@using (Html.BeginForm("Update", "Employees", FormMethod.Post))
+@using (Html.BeginForm("Update", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.LabelFor(x => x.FirstName)
-    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
-    @*@Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })*@
-    <br />
+    <div class="form-group">
 
-    @Html.LabelFor(x => x.LastName)
-    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
-    @*@Html.ValidationMessageFor(x => x.LastName, "", new { @style = "color:red" })*@
-    <br />
+        @Html.LabelFor(x => x.FirstName)
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })*@
+        <br />
 
-    @Html.LabelFor(x => x.EmployeeDepartment.DepartmentName)
-    @Html.DropDownListFor(x => x.EmployeeDepartmentId, (List<SelectListItem>)ViewBag.Departments, new { @class = "form-control" })
-    @*@Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })*@
-    <br />
+        @Html.LabelFor(x => x.LastName)
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.LastName, "", new { @style = "color:red" })*@
+        <br />
 
-   
-
-    @Html.LabelFor(x => x.Image)
-    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
-    <br />
-
-    @*@Html.LabelFor(x => x.Status)
-    @Html.CheckBoxFor(x => x.Status)
-    <br />*@
+        @Html.LabelFor(x => x.EmployeeDepartment.DepartmentName)
+        @Html.DropDownListFor(x => x.EmployeeDepartmentId, (List<SelectListItem>)ViewBag.Departments, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.FirstName, "", new { @style = "color:red" })*@
+        <br />
 
 
 
-    <button class="btn btn-outline-primary">Güncelle</button>
+        @Html.LabelFor(x => x.Image)
+        <input type="file" name="Image" />
+        <br />
+        <br />
+        <br />
+
+
+
+
+        <button class="btn btn-outline-primary">Güncelle</button>
+    </div>
 }
 

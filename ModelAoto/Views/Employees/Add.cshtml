@@ -7,29 +7,33 @@
 <br>
 <h2>Yeni Personel</h2>
 <br>
+@using (Html.BeginForm("Add", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
 
-<form class="form-group" method="post">
+        @Html.LabelFor(x => x.FirstName)
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+        <br />
 
-    @Html.LabelFor(x => x.FirstName)
-    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
-    <br />
+        @Html.LabelFor(x => x.LastName)
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        <br />
 
-    @Html.LabelFor(x => x.LastName)
-    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
-    <br />
+        @Html.LabelFor(x => x.EmployeeDepartment.DepartmentName)
+        @Html.DropDownListFor(x => x.EmployeeDepartmentId, (List<SelectListItem>)ViewBag.Departments, new { @class = "form-control" })
 
-    @Html.LabelFor(x => x.EmployeeDepartment.DepartmentName)
-    @Html.DropDownListFor(x => x.EmployeeDepartmentId, (List<SelectListItem>)ViewBag.Departments, new { @class = "form-control" })
-    
-    <br />
+        <br />
+
+        
+        @Html.LabelFor(x => x.Image) <br />
+        @*@Html.TextBoxFor(x => x.Image, new { @class = "form-control" })*@
+        <input type="file" name="Image" />
+        <br />
+        <br />
 
 
-    @Html.LabelFor(x => x.Image)
-    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
-    <br />
 
-   
+        <button class="btn btn-outline-primary">Ekle</button>
+    </form>
 
-    <button class="btn btn-outline-primary">Ekle</button>
-</form>
-
+}

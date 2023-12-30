@@ -10,15 +10,14 @@
 <a class="btn btn-outline-primary mb-2" href="/Invoices/Add/">Yeni Fatura Girişi</a>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>Id</th>
-        <th>Seri No</th>
-        <th>Fatura No</th>
+
+        <th>Seri-Sıra No</th>
         <th>Vergi Dairesi</th>
         <th>Tarih</th>
         <th>Saat</th>
         <th>Gönderici</th>
         <th>Alıcı</th>
-        <th>Toplam</th>        
+        <th>Toplam</th>
         <th></th>
 
     </tr>
@@ -26,31 +25,59 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Id</td>
-            <td>@item.SerialNumber</td>
-            <td>@item.InvoiceNo</td>
+
+            <td>@item.SerialNumber @item.InvoiceNo</td>
             <td>@item.TaxOffice</td>
             <td>@item.Date</td>
             <td>@item.Time</td>
             <td>@item.Sender</td>
             <td>@item.Reciepent</td>
-            <td>@item.TotalCost</td>         
+            <td>@item.TotalCost ₺</td>
 
             <td>
-                <a href="/Invoices/Details/@item.Id" class="btn btn-outline-warning">Detaylar</a>
-                <a href="/Invoices/Update/@item.Id" class="btn btn-outline-success">Güncelle</a>
-
-
-
+                <a href="/Invoices/Details/@item.Id" class="btn btn-warning">Detaylar</a>
+                <a href="/Invoices/Update/@item.Id" class="btn btn-success">Güncelle</a>               
+                <a href="/Invoices/Update/@item.Id" class="btn btn-default" style="background-color:black; color: white">Yeni Ürün Girişi</a>
             </td>
-
-
-
-
         </tr>
-
     }
-
-
 </table>
+<br />
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">PopUp Penceresi</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title">PopUp Diyalog Ekranı</h2>
+            </div>
+            
+            <div class="modal-body">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Seri No</td>
+                        <td>Sıra No</td>
+                        <td>Tutar</td>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.SerialNumber</td>
+                            <td>@item.InvoiceNo</td>
+                            <td>@item.TotalCost</td>
+                        </tr>
+                    }
+
+                </table>
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>

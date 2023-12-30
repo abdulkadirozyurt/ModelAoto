@@ -2,6 +2,7 @@
 using ModelAoto.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,50 +13,17 @@ namespace ModelAoto.Controllers
     {
         ModelAotoDbContext db = new ModelAotoDbContext();
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string productName)
         {
-            var products = db.Products./*Where(x => x.Status == true).*/ToList();
+            //var products = db.Products.ToList();
+            var products = from product in db.Products select product;
+            if (!string.IsNullOrEmpty(productName))
+            {
+                products = products.Where(y => y.ProductName.Contains(productName));
+            }
 
-            return View(products);
+            return View(products.ToList());
         }
-
-        //public ActionResult IndexMain()
-        //{
-        //    var products = db.Products.ToList();
-
-        //    return View(products);
-        //}
-
-
-
-        //public ActionResult IndexSortBrands()
-        //{
-        //    var products = db.Products.OrderByDescending(x => x.BrandId).ToList();
-
-        //    return View(products);
-        //}
-
-        //public ActionResult IndexSortScales()
-        //{
-        //    var products = db.Products.OrderByDescending(x => x.CategoryId).ToList();
-
-        //    return View(products);
-        //}
-
-        //// GET: Products
-        //public ActionResult IndexMiniGt()
-        //{
-        //    var products = db.Products.Where(x => x.BrandId == 1).ToList();
-
-        //    return View(products);
-        //}
-
-        //public ActionResult IndexGreenLight()
-        //{
-        //    var products = db.Products.Where(x => x.BrandId == 2).ToList();
-
-        //    return View(products);
-        //}
 
         [HttpGet]
         public ActionResult Add()
@@ -82,6 +50,15 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public ActionResult Add(Product product)
         {
+            if (Request.Files.Count > 0)
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);
+                string fileExtension = Path.GetExtension(Request.Files[0].FileName);
+                string filePath = "~/images/" + fileName + fileExtension;
+                Request.Files[0].SaveAs(Server.MapPath(filePath));
+                product.Image = "/images/" + fileName + fileExtension;
+            }
+
             db.Products.Add(product);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -125,6 +102,15 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public ActionResult Update(Product product)
         {
+            if (Request.Files.Count > 0)
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);
+                string fileExtension = Path.GetExtension(Request.Files[0].FileName);
+                string filePath = "~/images/" + fileName + fileExtension;
+                Request.Files[0].SaveAs(Server.MapPath(filePath));
+                product.Image = "/images/" + fileName + fileExtension;
+            }
+
             var productToUpdate = db.Products.Find(product.Id);
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.Description = product.Description;

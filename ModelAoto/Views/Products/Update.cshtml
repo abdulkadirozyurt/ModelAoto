@@ -10,7 +10,7 @@
 
 
 
-@using (Html.BeginForm("Update", "Products", FormMethod.Post))
+@using (Html.BeginForm("Update", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     @Html.LabelFor(x => x.ProductName)
@@ -47,7 +47,7 @@
     <br />
 
     @Html.LabelFor(x => x.Image)
-    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+    <input type="file" name="Image" />
     <br />
 
     <button class="btn btn-outline-primary">Güncelle</button>
