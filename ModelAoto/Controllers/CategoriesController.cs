@@ -1,5 +1,6 @@
 ﻿using ModelAoto.Models.Contexts;
 using ModelAoto.Models.Entities;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace ModelAoto.Controllers
     public class CategoriesController : Controller
     {
         ModelAotoDbContext db = new ModelAotoDbContext();
-        public ActionResult Index()
+        public ActionResult Index(int page =1)
         {
-            var categories = db.Categories.OrderBy(x => x.CategoryName).ToList();
+            var categories = db.Categories.OrderBy(x => x.CategoryName).ToList().ToPagedList(page,10);
+            
             return View(categories);
         }
 

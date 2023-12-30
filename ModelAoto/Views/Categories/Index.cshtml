@@ -1,5 +1,6 @@
-﻿@*@using ModelAoto.Models.Entities*@
-@model List<ModelAoto.Models.Entities.Category>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<ModelAoto.Models.Entities.Category>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -32,5 +33,7 @@
 
 </table>
 
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 
+@* modelden gelen değerler, Index aksiyonuna gönder, her defasında bana yeni bir sayfa oluşturarak indexe yönlendir. *@
 
