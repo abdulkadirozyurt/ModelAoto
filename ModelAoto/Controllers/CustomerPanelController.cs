@@ -8,7 +8,8 @@ namespace ModelAoto.Controllers
 {
     public class CustomerPanelController : Controller
     {
-        // GET: CustomerPanel
+
+        [Authorize]
         public ActionResult Index()
         {
             return View();

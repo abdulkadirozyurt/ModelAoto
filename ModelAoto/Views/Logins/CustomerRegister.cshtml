@@ -20,11 +20,11 @@
                 <br />
 
                 @Html.LabelFor(x => x.City.CityName)
-                @Html.DropDownListFor(x => x.CityId, (List<SelectListItem>)TempData["Cities"], new { @class = "form-control" })
+                @Html.DropDownListFor(x => x.CityId, (List<SelectListItem>)ViewBag.Cities, new { @class = "form-control" })
                 <br />
 
                 @Html.LabelFor(x => x.District.DistrictName)
-                @Html.DropDownListFor(x => x.DistrictId, (List<SelectListItem>)TempData["Districts"], new { @class = "form-control" })
+                @Html.DropDownListFor(x => x.DistrictId, (List<SelectListItem>)ViewBag.Districts, new { @class = "form-control" })
                 <br />
 
                 @Html.LabelFor(x => x.Mail)

@@ -44,11 +44,6 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public PartialViewResult CustomerRegister(Customer customer)
         {
-
-            db.Customers.Add(customer);
-            db.SaveChanges();
-
-
             List<SelectListItem> cities = db.Cities.Select(x => new SelectListItem
             {
                 Text = x.CityName,
@@ -64,6 +59,10 @@ namespace ModelAoto.Controllers
 
             ViewBag.Cities = cities;
             ViewBag.Districts = districts;
+
+
+            db.Customers.Add(customer);
+            db.SaveChanges();          
 
             return PartialView();
         }
