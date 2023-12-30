@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace ModelAoto.Controllers
 {
@@ -62,11 +63,60 @@ namespace ModelAoto.Controllers
 
 
             db.Customers.Add(customer);
-            db.SaveChanges();          
+            db.SaveChanges();
 
             return PartialView();
         }
 
-        
+        [HttpGet]
+        public ActionResult CustomerLogin()
+        {
+
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CustomerLogin(Customer customer)
+        {
+            var informations = db.Customers.FirstOrDefault(x => x.Mail == customer.Mail && x.Password == customer.Password);
+            if (informations != null)
+            {
+                FormsAuthentication.SetAuthCookie(informations.Mail, true);
+                Session["Mail"] = informations.Mail.ToString();
+                return RedirectToAction("Index", "CustomerPanel");
+            }
+            else
+            {
+                return View("Index", "Logins");
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminLogin(Admin admin)
+        {
+            var informations = db.Admins.FirstOrDefault(x => x.Username == admin.Username && x.Password == admin.Password);
+            if (informations != null)
+            {
+                FormsAuthentication.SetAuthCookie(informations.Username, true);
+                Session["Username"] = informations.Username.ToString();
+                return RedirectToAction("Index", "Categories");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Logins");
+            }
+
+        }
+
     }
 }

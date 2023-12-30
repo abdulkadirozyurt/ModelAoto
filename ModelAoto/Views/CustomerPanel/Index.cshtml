@@ -1,8 +1,41 @@
-﻿
+﻿@model ModelAoto.Models.Entities.Customer 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CustomerPanelLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Müşteri Bilgi Paneli</h2>
+<br />
 
+
+
+@using (Html.BeginForm("","CustomerPanel",FormMethod.Post))
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <label>Mail Adresi: @HttpContext.Current.User.Identity.Name</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>AD: @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" }) </td>
+        </tr>
+
+        <tr>
+            <td>SOYAD: @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" }) </td>
+        </tr>
+
+        <tr>
+            <td>E-POSTA: @Html.TextBoxFor(x => x.City.CityName, new { @class = "form-control" }) </td>
+        </tr>
+
+        <tr>
+            <td>ŞİFRE: @Html.TextBoxFor(x => x.Password, new { @class = "form-control" }) </td>
+        </tr>
+
+       
+    </table>
+
+    <button class="btn btn-warning">Güncelle</button>
+}

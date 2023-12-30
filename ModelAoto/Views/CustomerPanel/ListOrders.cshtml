@@ -1,0 +1,29 @@
+﻿@model List<ModelAoto.Models.Entities.Sale>
+@{
+    ViewBag.Title = "ListOrders";
+    Layout = "~/Views/Shared/_CustomerPanelLayout.cshtml";
+}
+<br />
+<h2>Siparişlerim</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ürün adı</th>
+        <th>Adet</th>
+        <th>Toplam Fiyat</th>
+        <th>Tarih</th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Quantity</td>
+            <td>@item.TotalPrice</td>
+            <td>@Convert.ToDateTime(item.Date).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+
+</table>
