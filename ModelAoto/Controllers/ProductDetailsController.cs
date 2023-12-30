@@ -1,4 +1,5 @@
 ﻿using ModelAoto.Models.Contexts;
+using ModelAoto.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,12 @@ namespace ModelAoto.Controllers
         // GET: ProductDetails
         public ActionResult Index()
         {
-            var products = db.Products.ToList();
-            return View(products);
+            ProductDetail productDetail = new ProductDetail();
+            //var products = db.Products.ToList();
+
+            productDetail.Products = db.Products.Where(x => x.Id == 1).ToList();
+            productDetail.Details = db.Details.Where(y => y.Id == 1).ToList();
+            return View(productDetail);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ModelAoto.Models.Entities
 
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
-        [DisplayName("Personel Adı")]
+        [DisplayName("Personel Adı")]        
         public string FirstName { get; set; }
 
         [Column(TypeName = "Varchar")]

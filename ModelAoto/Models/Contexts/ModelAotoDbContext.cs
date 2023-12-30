@@ -23,6 +23,8 @@ namespace ModelAoto.Models.Contexts
         public DbSet<Sale> Sales { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<District> Districts { get; set; }
+        public DbSet<Detail> Details{ get; set; }
+
 
 
 

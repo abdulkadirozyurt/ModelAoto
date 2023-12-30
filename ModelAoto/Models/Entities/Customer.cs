@@ -32,17 +32,23 @@ namespace ModelAoto.Models.Entities
 
 
         [DisplayName("Durum")]
-        [Required(ErrorMessage = "Boş bırakılamaz.")]
+        //[Required(ErrorMessage = "Boş bırakılamaz.")]
         public bool Status { get; set; }
+
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(20)]
+        [Display(Name ="Şifre")]
+        public string Password { get; set; }
 
 
         public ICollection<Sale> Sales { get; set; }
 
-        [Required(ErrorMessage = "Lütfen şehir seçiniz..")]
+        //[Required(ErrorMessage = "Lütfen şehir seçiniz..")]
         public int CityId { get; set; }
         public virtual City City { get; set; }
 
-        [Required(ErrorMessage = "Lütfen ilçe seçiniz..")]
+        //[Required(ErrorMessage = "Lütfen ilçe seçiniz..")]
         public int DistrictId { get; set; }
         public virtual District District { get; set; }
        

@@ -19,43 +19,43 @@ namespace ModelAoto.Controllers
             return View(products);
         }
 
-        public ActionResult IndexMain()
-        {
-            var products = db.Products.ToList();
+        //public ActionResult IndexMain()
+        //{
+        //    var products = db.Products.ToList();
 
-            return View(products);
-        }
+        //    return View(products);
+        //}
 
 
 
-        public ActionResult IndexSortBrands()
-        {
-            var products = db.Products.OrderByDescending(x => x.BrandId).ToList();
+        //public ActionResult IndexSortBrands()
+        //{
+        //    var products = db.Products.OrderByDescending(x => x.BrandId).ToList();
 
-            return View(products);
-        }
+        //    return View(products);
+        //}
 
-        public ActionResult IndexSortScales()
-        {
-            var products = db.Products.OrderByDescending(x => x.CategoryId).ToList();
+        //public ActionResult IndexSortScales()
+        //{
+        //    var products = db.Products.OrderByDescending(x => x.CategoryId).ToList();
 
-            return View(products);
-        }
+        //    return View(products);
+        //}
 
-        // GET: Products
-        public ActionResult IndexMiniGt()
-        {
-            var products = db.Products.Where(x => x.BrandId == 1).ToList();
+        //// GET: Products
+        //public ActionResult IndexMiniGt()
+        //{
+        //    var products = db.Products.Where(x => x.BrandId == 1).ToList();
 
-            return View(products);
-        }
+        //    return View(products);
+        //}
 
-        public ActionResult IndexGreenLight()
-        {
-            var products = db.Products.Where(x => x.BrandId == 2).ToList();
+        //public ActionResult IndexGreenLight()
+        //{
+        //    var products = db.Products.Where(x => x.BrandId == 2).ToList();
 
-            return View(products);
-        }
+        //    return View(products);
+        //}
 
         [HttpGet]
         public ActionResult Add()

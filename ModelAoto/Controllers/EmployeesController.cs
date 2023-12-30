@@ -72,5 +72,17 @@ namespace ModelAoto.Controllers
 
        
 
+
+
+
+
+
+
+        public ActionResult EmployeeList()
+        {
+            var employees = db.Employees.ToList();
+            return View(employees);
+        }
+
     }
 }

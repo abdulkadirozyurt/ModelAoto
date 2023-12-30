@@ -1,0 +1,47 @@
+﻿@model  ModelAoto.Models.Entities.Customer
+
+<div class="login-form login-form-left">
+    <div class="agile-row">
+
+        @*<h3>Müşteri Kaydı</h3>*@
+
+        <div class="login-agileits-top">
+
+
+
+            @using (Html.BeginForm("CustomerRegister", "Logins", FormMethod.Post))
+            {
+                @Html.LabelFor(x => x.FirstName)
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(x => x.LastName)
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(x => x.City.CityName)
+                @Html.DropDownListFor(x => x.CityId, (List<SelectListItem>)TempData["Cities"], new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(x => x.District.DistrictName)
+                @Html.DropDownListFor(x => x.DistrictId, (List<SelectListItem>)TempData["Districts"], new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(x => x.Mail)
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(x => x.Password)
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                <br />
+
+                <button class="btn btn-primary">Kaydol</button>
+            }
+
+        </div>
+
+
+    </div>
+</div>
+
+

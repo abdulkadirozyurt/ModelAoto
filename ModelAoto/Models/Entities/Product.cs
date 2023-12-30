@@ -45,13 +45,15 @@ namespace ModelAoto.Models.Entities
 
         public virtual Category Category { get; set; }
         public int CategoryId { get; set; }
-        
+
 
         public virtual Brand Brand { get; set; }
         public int BrandId { get; set; }
 
 
         public ICollection<Sale> Sales { get; set; }
+
+        public ICollection<Detail> Details { get; set; }
 
 
     }
