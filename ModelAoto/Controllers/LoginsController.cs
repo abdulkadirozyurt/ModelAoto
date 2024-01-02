@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace ModelAoto.Controllers
 {
+    [AllowAnonymous]
     public class LoginsController : Controller
     {
         ModelAotoDbContext db = new ModelAotoDbContext();
@@ -18,55 +19,7 @@ namespace ModelAoto.Controllers
             return View();
         }
 
-        [HttpGet]
-        public PartialViewResult CustomerRegister()
-        {
-
-
-            List<SelectListItem> cities = db.Cities.Select(x => new SelectListItem
-            {
-                Text = x.CityName,
-                Value = x.Id.ToString()
-            }).ToList();
-
-            List<SelectListItem> districts = db.Districts.Select(y => new SelectListItem
-            {
-                Text = y.DistrictName,
-                Value = y.Id.ToString()
-
-            }).ToList();
-
-            ViewBag.Cities = cities;
-            ViewBag.Districts = districts;
-
-            return PartialView();
-        }
-
-        [HttpPost]
-        public PartialViewResult CustomerRegister(Customer customer)
-        {
-            List<SelectListItem> cities = db.Cities.Select(x => new SelectListItem
-            {
-                Text = x.CityName,
-                Value = x.Id.ToString()
-            }).ToList();
-
-            List<SelectListItem> districts = db.Districts.Select(y => new SelectListItem
-            {
-                Text = y.DistrictName,
-                Value = y.Id.ToString()
-
-            }).ToList();
-
-            ViewBag.Cities = cities;
-            ViewBag.Districts = districts;
-
-
-            db.Customers.Add(customer);
-            db.SaveChanges();
-
-            return PartialView();
-        }
+       
 
         [HttpGet]
         public ActionResult CustomerLogin()
@@ -83,7 +36,7 @@ namespace ModelAoto.Controllers
             var informations = db.Customers.FirstOrDefault(x => x.Mail == customer.Mail && x.Password == customer.Password);
             if (informations != null)
             {
-                FormsAuthentication.SetAuthCookie(informations.Mail, true);
+                FormsAuthentication.SetAuthCookie(informations.Mail, false);
                 Session["Mail"] = informations.Mail.ToString();
                 return RedirectToAction("Index", "CustomerPanel");
             }
@@ -91,7 +44,6 @@ namespace ModelAoto.Controllers
             {
                 return View("Index", "Logins");
             }
-
         }
 
         [HttpGet]
@@ -107,7 +59,7 @@ namespace ModelAoto.Controllers
             var informations = db.Admins.FirstOrDefault(x => x.Username == admin.Username && x.Password == admin.Password);
             if (informations != null)
             {
-                FormsAuthentication.SetAuthCookie(informations.Username, true);
+                FormsAuthentication.SetAuthCookie(informations.Username, false);
                 Session["Username"] = informations.Username.ToString();
                 return RedirectToAction("Index", "Categories");
             }
@@ -118,5 +70,79 @@ namespace ModelAoto.Controllers
 
         }
 
+
+        [HttpGet]
+        public ActionResult AdminLogout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
+
+
+
+        [HttpGet]
+        public ActionResult FeCustomerLogin()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult FeCustomerLogin(Customer customer)
+        {
+            var informations = db.Customers.FirstOrDefault(x => x.Mail == customer.Mail && x.Password == customer.Password);
+            if (informations != null)
+            {
+                FormsAuthentication.SetAuthCookie(informations.Mail, false);
+                Session["Mail"] = informations.Mail.ToString();
+                return RedirectToAction("Index", "FeProducts");
+            }
+            else
+            {
+                return View("Index", "Logins");
+            }
+            
+        }
+
+        [HttpGet]
+        public ActionResult FeCustomerLogout()
+        { 
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index","FeProducts");
+
+        }
+
+
+        [HttpGet]
+        public ActionResult FeCustomerRegister()
+        {
+            List<SelectListItem> cities = db.Cities.Select(x => new SelectListItem
+            {
+                Text = x.CityName,
+                Value = x.Id.ToString()
+            }).ToList();
+
+            List<SelectListItem> districts = db.Districts.Select(y => new SelectListItem
+            {
+                Text = y.DistrictName,
+                Value = y.Id.ToString()
+
+            }).ToList();
+
+            ViewBag.Cities = cities;
+            ViewBag.Districts = districts;
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult FeCustomerRegister(Customer customer)
+        {
+            db.Customers.Add(customer);
+            db.SaveChanges();
+            return RedirectToAction("Index", "FeProducts");
+
+        }
     }
 }

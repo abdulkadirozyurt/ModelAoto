@@ -1,0 +1,36 @@
+﻿@model  ModelAoto.Models.Entities.Customer
+@{
+    ViewBag.Title = "FeCustomerLogin";
+    Layout = "~/Views/Shared/_FeLayout.cshtml";
+}
+
+
+<div class="container p-5 col-3">
+
+    @using (Html.BeginForm("FeCustomerLogin", "Logins", FormMethod.Post))
+    {
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="form2Example1" class="form-control" name="Mail" />
+            <label class="form-label" for="form2Example1">E-Posta</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form2Example2" class="form-control" name="Password" />
+            <label class="form-label" for="form2Example2">Şifre</label>
+        </div>
+
+
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Giriş Yap</button>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+            <p>Hesabınız yok mu? <a href="#!">Kayıt olun</a></p>
+
+        </div>
+    }  
+
+</div>

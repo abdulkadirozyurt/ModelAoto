@@ -2,6 +2,7 @@
 using ModelAoto.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
@@ -30,6 +31,15 @@ namespace ModelAoto.Controllers
         [HttpPost]
         public ActionResult Add(Brand brand)
         {
+            if (Request.Files.Count > 0)  // yani yaptığım işlemler içerisinde bir dosya mevcutsa 
+            {
+                string fileName = Path.GetFileName(Request.Files[0].FileName);
+                string fileExtension = Path.GetExtension(Request.Files[0].FileName);
+                string filePath = "~/images/" + fileName + fileExtension;
+                Request.Files[0].SaveAs(Server.MapPath(filePath));
+                brand.Image = "/images/" + fileName + fileExtension;
+            }
+
             db.Brands.Add(brand);
             db.SaveChanges();
             return RedirectToAction("Index");

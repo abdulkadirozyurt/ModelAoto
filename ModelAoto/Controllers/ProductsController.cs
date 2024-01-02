@@ -58,7 +58,7 @@ namespace ModelAoto.Controllers
                 Request.Files[0].SaveAs(Server.MapPath(filePath));
                 product.Image = "/images/" + fileName + fileExtension;
             }
-
+            product.AddDate = DateTime.Now;
             db.Products.Add(product);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -94,14 +94,19 @@ namespace ModelAoto.Controllers
                                                Value = x.Id.ToString(),
                                            }).ToList();
 
+           
+
             ViewBag.categories = categories;
             ViewBag.brands = brands;
+           
             return View(product);
         }
 
         [HttpPost]
         public ActionResult Update(Product product)
         {
+            var productToUpdate = db.Products.Find(product.Id);
+
             if (Request.Files.Count > 0)
             {
                 string fileName = Path.GetFileName(Request.Files[0].FileName);
@@ -109,16 +114,17 @@ namespace ModelAoto.Controllers
                 string filePath = "~/images/" + fileName + fileExtension;
                 Request.Files[0].SaveAs(Server.MapPath(filePath));
                 product.Image = "/images/" + fileName + fileExtension;
+                productToUpdate.Image = product.Image;
             }
 
-            var productToUpdate = db.Products.Find(product.Id);
+            
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.Description = product.Description;
             productToUpdate.StockAmount = product.StockAmount;
             productToUpdate.PurchasePrice = product.PurchasePrice;
             productToUpdate.SalePrice = product.SalePrice;
             productToUpdate.Status = product.Status;
-            productToUpdate.Image = product.Image;
+           
             productToUpdate.CategoryId = product.CategoryId;
             productToUpdate.BrandId = product.BrandId;
 

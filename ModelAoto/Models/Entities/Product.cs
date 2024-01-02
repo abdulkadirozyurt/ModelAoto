@@ -41,6 +41,8 @@ namespace ModelAoto.Models.Entities
         [DisplayName("Fotoğraf")]
         public string Image { get; set; }
 
+        public DateTime AddDate{ get; set; }
+
 
 
         public virtual Category Category { get; set; }

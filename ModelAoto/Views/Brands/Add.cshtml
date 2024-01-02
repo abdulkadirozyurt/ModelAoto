@@ -8,14 +8,20 @@
 <h2>Yeni Marka</h2>
 <br>
 
-<form class="form-group" method="post">
 
-    @Html.LabelFor(x => x.BrandName)
-    @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control" })
-    <br />
+@using (Html.BeginForm("Add", "Brands", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    
 
+        @Html.LabelFor(x => x.BrandName)
+        @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control" })
+        <br />
+
+        @Html.LabelFor(x=>x.Image)
+        <input type="file" name="Image" />
+
+
+        <button class="btn btn-outline-primary">Ekle</button>
    
 
-    <button class="btn btn-outline-primary">Ekle</button>
-</form>
-
+}

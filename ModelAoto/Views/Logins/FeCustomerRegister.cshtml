@@ -1,0 +1,39 @@
+﻿@model ModelAoto.Models.Entities.Customer
+@{
+    ViewBag.Title = "FeCustomerRegister";
+    Layout = "~/Views/Shared/_FeLayout.cshtml";
+}
+
+<div class="container p-5 col-3">
+
+    @using (Html.BeginForm("FeCustomerRegister", "Logins", FormMethod.Post))
+    {
+        @Html.LabelFor(x => x.FirstName)
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+        <br />
+
+        @Html.LabelFor(x => x.LastName)
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        <br />
+
+        @Html.LabelFor(x => x.City.CityName)
+        @Html.DropDownListFor(x => x.CityId, (List<SelectListItem>)ViewBag.Cities, new { @class = "form-control" })
+        <br />
+
+        @Html.LabelFor(x => x.District.DistrictName)
+        @Html.DropDownListFor(x => x.DistrictId, (List<SelectListItem>)ViewBag.Districts, new { @class = "form-control" })
+        <br />
+
+        @Html.LabelFor(x => x.Mail)
+        @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+        <br />
+
+        @Html.LabelFor(x => x.Password)
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", type = "password" })
+        <br />
+
+        <button class="btn btn-primary">Kaydol</button>
+    }
+
+</div>
+

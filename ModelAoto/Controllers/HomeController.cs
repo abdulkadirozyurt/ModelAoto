@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelAoto.Models.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,25 +7,17 @@ using System.Web.Mvc;
 
 namespace ModelAoto.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
-    {
+
+    {   ModelAotoDbContext db = new ModelAotoDbContext();
         public ActionResult Index()
         {
-            return View();
+            var products = db.Products.ToList();
+
+            return View(products);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
     }
 }

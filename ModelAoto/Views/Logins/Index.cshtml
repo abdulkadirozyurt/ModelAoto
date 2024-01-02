@@ -57,22 +57,22 @@
                         *** FİRMA BİLGİ***
                     </p>
 
-                    <div class="content3">
+                    @*<div class="content3">
                         <ul>
                             <li><a class="" href="#"> Firmalar</a></li>
                             <li><a class="read" href="#"> Ürünlerimiz</a></li>
                         </ul>
-                    </div>
+                    </div>*@
 
                 </div>
             </div>
             <div class="register-right">
-                <div class="register-in">
+                @*<div class="register-in">
                     <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog2">Müşteri Kaydı</a>
                 </div>
                 <div class="register-in middle">
                     <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog">Müşteri Giriş</a>
-                </div>
+                </div>*@
                 <div class="register-in">
                     <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog1">Personel Giriş</a>
                 </div>
@@ -83,35 +83,13 @@
 
     </section>
     <!-- //section -->
-    <!-- customer Login form popup-->
-    <div class="pop-up">
 
-        <div id="small-dialog" class="mfp-hide book-form">
-            <div class="login-form login-form-left">
-                <div class="agile-row">
 
-                    <h3>Müşteri Girişi</h3>
+   
+   
 
-                    <span class="fa fa-lock"></span>
-                    <div class="clear"></div>
-                    <div class="login-agileits-top">
-                        @using (Html.BeginForm("CustomerLogin", "Logins", FormMethod.Post))
-                        {
-                            <input type="text" class="name" name="Mail" Placeholder="E-Posta" required="" />
-                            <input type="password" class="name" name="Password" Placeholder="Şifre" required="" />
 
-                            <input type="submit" value="Giriş Yap">
-                        }
-                    </div>
-                    <div class="login-agileits-bottom">
-                        <h6><a href="#">Şifreni mi unuttun?</a></h6>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </div>
-    <!-- //customer Login form popup-->
     <!-- Employee Login form popup-->
     <div class="pop-up">
         <div id="small-dialog1" class="mfp-hide book-form">
@@ -139,19 +117,12 @@
         </div>
     </div>
     <!-- //Employee Login form popup-->
-    <!-- Customer Register form popup-->
-    <div class="pop-up">
-        <div id="small-dialog2" class="mfp-hide book-form">
-
-            @Html.Action("CustomerRegister", "Logins")
 
 
 
 
-        </div>
-    </div>
 
-    <!-- //Customer Register form popup-->
+
     <!-- js -->
     <script type="text/javascript" src="~/login/js/jquery-2.1.4.min.js"></script>
     <!-- //js -->

@@ -12,6 +12,7 @@ namespace ModelAoto.Controllers
     public class CategoriesController : Controller
     {
         ModelAotoDbContext db = new ModelAotoDbContext();
+
         public ActionResult Index(int page =1)
         {
             var categories = db.Categories.OrderBy(x => x.CategoryName).ToList().ToPagedList(page,10);
